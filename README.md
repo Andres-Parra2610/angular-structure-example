@@ -1,27 +1,39 @@
-# Structure
+# Project Structure Overview
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.
+This Angular project utilizes a blend of both standalone components and NgModules to achieve modularity and reusability across different parts of the application. The structure is designed to accommodate specific features for different clients by lazily loading client-specific modules, enhancing the application's scalability and maintainability.
 
-## Development server
+## src/app
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Modules
 
-## Code scaffolding
+Located under the `src/app/modules`, this directory contains all the NgModules of the application. Each module corresponds to a distinct functional area of the application, such as login handling, map functionalities, etc. Add modules that are relevant into application.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+#### Example Modules:
 
-## Build
+- **Login**: Handles user authentication.
+- **Maps**: Manages all map-related functionalities.
+- **Monitoring**: Weed monitoring
+- **Planification**: Activities planning
+- **Warehouses**: Manages inventory and warehouse-related operations.
+- **Ohers**: Other modules
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Shared
 
-## Running unit tests
+The `src/app/shared` directory is pivotal for housing reusable components and helpers that are not tied to specific modules. This folder also contains standalone components, which can be utilized throughout the application without the dependency on an overarching module
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Example Components:
+- **Charts**: Reusable chart components for visual data representation.
+- **Inputs**: Custom input components for forms.
 
-## Running end-to-end tests
+#### Helpers:
+General utility functions and classes that assist in common tasks across the application.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Users
 
-## Further help
+Each client has a dedicated subdirectory within the `src/app/users`, which contains modules specific to them. These modules are loaded lazily, ensuring that the application remains efficient by only loading the necessary resources when required.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+#### Example Clients:
+- **Danac**
+- **Polar**
+
+Each client directory can include a custom set of modules that are relevant to the client's needs, ensuring a tailored user experience.
